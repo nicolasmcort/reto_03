@@ -1,3 +1,4 @@
+``` mermaid
 classDiagram
     class MenuItem {
         - name: str
@@ -44,3 +45,6 @@ classDiagram
     Menu "1" *-- "1..*" MenuItem : contains
     Order "1" o-- "1" Menu : uses
     Order "1" *-- "0..*" MenuItem : aggregates
+
+
+```
