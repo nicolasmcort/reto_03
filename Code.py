@@ -32,8 +32,8 @@ class Menu:
             Appetizer("Cookies", 4),
             Appetizer("Popcorn", 4),
             MainCourse("Pizza", 10),
-            MainCourse("Vegetarian Burger", 12),
-            MainCourse("Roast Chicken", 14),
+            MainCourse("Burger", 12),
+            MainCourse("Spaghetti", 14),
             MainCourse("Salad", 8)
         ]
 
@@ -47,7 +47,8 @@ class Order:
     def __init__(self, menu: Menu) -> None:
         self.menu = menu
         self.menu_items = []
-
+        
+    # Add an item to the order
     def add_item(self, name: str) -> None:
         item = self.menu.get_item(name)  
         if item:
@@ -55,6 +56,7 @@ class Order:
         else:
             print(f"Item '{name}' is not in the menu")
 
+    # Apply a discount
     def apply_discount(self) -> float:
         total_price = 0
         beverage_count = 0
@@ -86,6 +88,7 @@ class Order:
 
         return discount
 
+    # Calculate total price
     def calculate_total_price(self) -> float:
         total_price = 0
         for item in self.menu_items:
@@ -98,40 +101,41 @@ class Order:
 menu = Menu()
 order = Order(menu)
 
-# Mostrar el menú
+# Show the menu
 print("Menu:")
 for item in menu.items:
     print(f"{item.name} - ${item.price}")
 
-print("\nType the name of the item you want to order. Type 'done' to finish your order.\n")
+print("\nType the name of the item you want to order. Type 'done' to finish your order\n")
 
-# Permitir al usuario añadir ítems al pedido
+# Allow the user to add more items
 while True:
     item_name = input("Enter item name: ").strip()
     if item_name.lower() == "done":
         break
     order.add_item(item_name)
 
-# Mostrar los ítems ordenados
+
 if order.menu_items:
     print("\nYour order:")
     for item in order.menu_items:
         print(f"- {item.name}: ${item.price}")
     
-    # Obtener más detalles para cada ítem
+    # Obtain more details about the order
     for item in order.menu_items:
         if type(item) == Beverage:
-            item.temperature = float(input(f"Indicate the temperature of the {item.name} (e.g., 75.5): "))
-            item.is_sugared = input(f"Would you like {item.name} with sugar? (y/n): ").strip().lower() == "y"
+            item.temperature = float(input(f"Indicate the temperature of the {item.name.lower()}: "))
+            item.is_sugared = input(f"Would you like your {item.name.lower()} with sugar? (y/n): ").strip().lower() == "y"
         elif type(item) == Appetizer:
-            item.calories = float(input(f"Indicate the amount of calories for {item.name} (e.g., 120.5): "))
+            item.calories = float(input(f"Indicate the amount of calories for your {item.name.lower()}: "))
         elif type(item) == MainCourse:
-            item.is_vegetarian = input(f"Would you like {item.name} vegetarian? (y/n): ").strip().lower() == "y"
-            item.prep_time = float(input(f"Indicate the preparation time for {item.name} (in minutes): "))
+            item.is_vegetarian = input(f"Would you like the {item.name.lower()} to be vegetarian? (y/n): ").strip().lower() == "y"
+            item.prep_time = float(input(f"Indicate the preparation time for your {item.name.lower()} (in minutes): "))
 else:
-    print("\nNo items were ordered.")
+    print("\nNo items were ordered")
     
 
-# Calcular el precio total
+# Calculate the total price
 total_price = order.calculate_total_price()
-print(f"\nThe total price is: ${total_price:.2f}")
+print(f"\nThe total price is: ${total_price}")
+
