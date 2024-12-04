@@ -1,6 +1,6 @@
 # reto_03
 
-El siguiebte código simula un sistema de pedidos de un restaurante. Contiene clases para representar elementos del menú como bebidas, aperitivos y platos principales, cada uno con atributos específicos. La clase `Menu` gestiona los items disponibles y la clase `Order` permite agregar elementos al pedido, aplicar descuentos y calcular el total teniendo en cuenta la cantidad de items y los descuentos. El sistema también permite al usuario ingresar detalles adicionales para cada ítem del pedido, como la temperatura de las bebidas o el tiempo de preparación de los platos.
+El siguiente código simula un sistema de pedidos de un restaurante. Contiene clases para representar elementos del menú como bebidas, aperitivos y platos principales, cada uno con atributos específicos. La clase `Menu` gestiona los items disponibles y la clase `Order` permite agregar elementos al pedido, aplicar descuentos y calcular el total teniendo en cuenta la cantidad de items y los descuentos. El sistema también permite al usuario ingresar detalles adicionales para cada ítem del pedido, como la temperatura de las bebidas o el tiempo de preparación de los platos.
 
 ``` python
 class MenuItem:
